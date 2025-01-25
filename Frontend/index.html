@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Meal Suggestions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .meal {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .meal h2 {
+            margin: 0;
+        }
+        .meal p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Meal Suggestions</h1>
+    <div id="meals-container">
+        <!-- Meals will be displayed here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const meals = [
+                { name: "Spaghetti Carbonara", time: "30 minutes" },
+                { name: "Chicken Salad", time: "20 minutes" },
+                { name: "Beef Stir Fry", time: "25 minutes" }
+            ];
+
+            const mealsContainer = document.getElementById('meals-container');
+
+            meals.forEach(meal => {
+                const mealDiv = document.createElement('div');
+                mealDiv.className = 'meal';
+
+                const mealName = document.createElement('h2');
+                mealName.textContent = meal.name;
+                mealDiv.appendChild(mealName);
+
+                const mealTime = document.createElement('p');
+                mealTime.textContent = `Time to make: ${meal.time}`;
+                mealDiv.appendChild(mealTime);
+
+                mealsContainer.appendChild(mealDiv);
+            });
+        });
+    </script>
+</body>
+</html>

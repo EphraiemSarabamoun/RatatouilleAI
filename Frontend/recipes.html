@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Recipe Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .recipe {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .recipe h2 {
+            margin: 0;
+        }
+        .recipe p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Recipe Details</h1>
+    <div id="recipe-container">
+        <!-- Recipe details will be displayed here -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const recipes = {
+                "Spaghetti Carbonara": {
+                    ingredients: ["Spaghetti", "Eggs", "Parmesan cheese", "Pancetta", "Pepper"],
+                    instructions: "Boil spaghetti. Cook pancetta. Mix eggs and cheese. Combine all with pepper."
+                },
+                "Chicken Salad": {
+                    ingredients: ["Chicken breast", "Lettuce", "Tomatoes", "Cucumber", "Olive oil", "Lemon juice"],
+                    instructions: "Grill chicken. Chop vegetables. Mix all with olive oil and lemon juice."
+                },
+                "Beef Stir Fry": {
+                    ingredients: ["Beef strips", "Bell peppers", "Onions", "Soy sauce", "Garlic", "Ginger"],
+                    instructions: "Stir fry beef. Add vegetables. Mix with soy sauce, garlic, and ginger."
+                }
+            };
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const mealName = urlParams.get('meal');
+            const recipe = recipes[mealName];
+
+            if (recipe) {
+                const recipeContainer = document.getElementById('recipe-container');
+
+                const recipeTitle = document.createElement('h2');
+                recipeTitle.textContent = mealName;
+                recipeContainer.appendChild(recipeTitle);
+
+                const ingredientsTitle = document.createElement('h3');
+                ingredientsTitle.textContent = 'Ingredients:';
+                recipeContainer.appendChild(ingredientsTitle);
+
+                const ingredientsList = document.createElement('ul');
+                recipe.ingredients.forEach(ingredient => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = ingredient;
+                    ingredientsList.appendChild(listItem);
+                });
+                recipeContainer.appendChild(ingredientsList);
+
+                const instructionsTitle = document.createElement('h3');
+                instructionsTitle.textContent = 'Instructions:';
+                recipeContainer.appendChild(instructionsTitle);
+
+                const instructions = document.createElement('p');
+                instructions.textContent = recipe.instructions;
+                recipeContainer.appendChild(instructions);
+            } else {
+                const recipeContainer = document.getElementById('recipe-container');
+                const errorMessage = document.createElement('p');
+                errorMessage.textContent = 'Recipe not found.';
+                recipeContainer.appendChild(errorMessage);
+            }
+        });
+    </script>
+</body>
+</html>

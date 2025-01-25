@@ -1,0 +1,34 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f8f8f8;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    color: blue;
+}
+
+.meal {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+.meal:hover {
+    transform: scale(1.02);
+}
+
+.meal h2 {
+    margin: 0;
+    color: #333;
+}
+
+.meal p {
+    margin: 5px 0;
+    color: #666;
+}
