@@ -36,7 +36,7 @@ Format your response like this:
 <time>5</time>
 <recipe>Recipe for Meal 3</recipe>
 """
-        
+    print(persona)
     response = openai.ChatCompletion.create(model="gpt-4-turbo", messages=[
                 {"role": "system", "content": persona},
                 {"role": "user", "content": prompt}], temperature = 0.7)
@@ -48,6 +48,7 @@ def main():
     meals = generate_meals(groceries)
     print("Here are three meal suggestions:")
     print(meals)
+    # test
 
 
 main()
